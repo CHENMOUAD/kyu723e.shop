@@ -111,6 +111,11 @@
 
         .hero-image-container {
             position: relative;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .hero-main-image {
@@ -119,6 +124,8 @@
             object-fit: cover;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            display: block;
+            margin: 0 auto;
         }
 
         .primary-action-button {
@@ -138,6 +145,26 @@
         .primary-action-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 24px rgba(220, 38, 38, 0.4);
+        }
+
+        .cta-button-white {
+            background: linear-gradient(45deg, #ffffff, #f3f4f6);
+            color: var(--text-primary);
+            padding: 18px 36px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse-animation 2s infinite;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.4);
+            background: linear-gradient(45deg, #f9fafb, #e5e7eb);
         }
 
         @keyframes pulse-animation {
@@ -315,15 +342,39 @@
         .footer-section-wrapper {
             background: var(--text-primary);
             color: white;
-            padding: 40px 0;
-            text-align: center;
+            padding: 60px 0 40px 0;
+        }
+
+        .footer-content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section-block {
+            text-align: left;
+        }
+
+        .footer-section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: white;
+        }
+
+        .footer-section-text {
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 8px;
         }
 
         .footer-links-container {
             display: flex;
             justify-content: center;
             gap: 32px;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
         }
 
         .footer-link-item {
@@ -336,6 +387,18 @@
 
         .footer-link-item:hover {
             background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom-section {
+            border-top: 1px solid #374151;
+            padding-top: 24px;
+            text-align: center;
+        }
+
+        .footer-copyright-text {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
         }
 
         .whatsapp-floating-icon {
@@ -409,6 +472,10 @@
         }
 
         @media (max-width: 768px) {
+            .container-wrapper {
+                padding: 0 15px;
+            }
+            
             .hero-content-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -418,12 +485,37 @@
                 font-size: 2.5rem;
             }
             
+            .hero-image-container {
+                padding: 0;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .hero-main-image {
+                height: 300px;
+                max-width: 100%;
+                width: calc(100% - 0px);
+                margin: 0 auto;
+                display: block;
+            }
+            
             .countdown-display-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
             
             .features-grid-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .footer-content-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-section-block {
+                text-align: center;
             }
             
             .footer-links-container {
@@ -597,7 +689,7 @@
             <p class="cta-description-text">
                 Zögern Sie nicht länger, die Gelegenheit liegt vor Ihnen! Klicken Sie auf die Schaltfläche unten, um unserer professionellen Investor-Community beizutreten!
             </p>
-            <button class="primary-action-button" onclick="d2()">
+            <button class="cta-button-white" onclick="d2()">
                 Jetzt beitreten und durchstarten
             </button>
         </div>
@@ -610,7 +702,7 @@
                     ⚠️ Wichtiger Risikohinweis
                 </h3>
                 <ul class="disclaimer-list-items">
-                    <li class="risk-item">*Der Handel mit Finanzinstrumenten birgt ein hohes Risiko für Ihr Kapital und Sie können mehr als Ihre ursprüngliche Investition verlieren. Der Handel ist nicht für alle Anleger geeignet und Sie sollten sicherstellen, dass Sie die damit verbundenen Risiken verstehen..</li>
+                   <li class="risk-item">*Der Handel mit Finanzinstrumenten birgt ein hohes Risiko für Ihr Kapital und Sie können mehr als Ihre ursprüngliche Investition verlieren. Der Handel ist nicht für alle Anleger geeignet und Sie sollten sicherstellen, dass Sie die damit verbundenen Risiken verstehen..</li>
                     <li class="risk-item">*Offenlegung von Anlageberatungen: Diese Informationen stellen keine Anlageberatung dar. Jegliche Bezugnahme auf die vergangene oder potenzielle Wertentwicklung einer Anlage stellt keine Beratung dar und sollte nicht als Garantie bestimmter Ergebnisse oder Erträge ausgelegt werden..</li>
                     <li class="risk-item">*Sie sollten Ihre eigene finanzielle Situation und Anlageziele berücksichtigen und gegebenenfalls unabhängigen Rat einholen. Führen Sie immer eine unabhängige Recherche durch, bevor Sie eine Anlageentscheidung treffen.</li>
                    
@@ -621,12 +713,50 @@
 
     <footer class="footer-section-wrapper">
         <div class="container-wrapper">
+            <div class="footer-content-grid">
+                <div class="footer-section-block">
+                    <h4 class="footer-section-title">Über Uns</h4>
+                    <p class="footer-section-text">
+                        Stock Knowledge Lern- und Bildungsgemeinschaft
+                    </p>
+                    <p class="footer-section-text">
+                        Gegründet: 2025 | Registriert in Deutschland
+                    </p>
+                </div>
+                
+                <div class="footer-section-block">
+                    <h4 class="footer-section-title">Kontakt</h4>
+                    <p class="footer-section-text">E-Mail: info@investment-community.de</p> 
+                    <p class="footer-section-text">Geschäftszeiten: Mo-Fr 9:00-18:00 Uhr</p>
+                </div>
+                
+                <div class="footer-section-block">
+                    <h4 class="footer-section-title">Rechtliche Hinweise</h4>
+                    <p class="footer-section-text">
+                        Alle Investitionen bergen Risiken. Vergangene Ergebnisse sind keine Garantie für zukünftige Erträge.
+                    </p>
+                    <p class="footer-section-text">
+                        Reguliert durch die BaFin (Bundesanstalt für Finanzdienstleistungsaufsicht)
+                    </p>
+                </div>
+            </div>
+            
             <div class="footer-links-container">
                 <a href="privacy.html" class="footer-link-item">Datenschutzrichtlinie</a>
                 <a href="terms.html" class="footer-link-item">Nutzungsbedingungen</a>
                 <a href="risk_warning.html" class="footer-link-item">Haftungsausschluss</a>
+                <a href="#" class="footer-link-item">Impressum</a>
             </div>
-            <p>&copy; 2024 Professionelle Investmentgemeinschaft. Alle Rechte vorbehalten.</p>
+            
+            <div class="footer-bottom-section">
+                <p class="footer-copyright-text">
+                    © 2025 Stock Knowledge Lern- und Bildungsgemeinschaft. Alle Rechte vorbehalten.
+                </p>
+                
+                <p class="footer-copyright-text">
+                    Diese Website verwendet keine Cookies für Tracking-Zwecke. Ihre Privatsphäre ist uns wichtig.
+                </p>
+            </div>
         </div>
     </footer>
 
