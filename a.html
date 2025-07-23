@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Professionelle Investmentgemeinschaft</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #dc2626;
+            --accent-color: #059669;
+            --warning-color: #d97706;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --background-light: #f8fafc;
+            --background-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-light);
+            overflow-x: hidden;
+        }
+
+        .container-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-section-container {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text-content {
+            z-index: 2;
+        }
+
+        .hero-main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero-description-text {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .countdown-timer-wrapper {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-label-text {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .countdown-display-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .countdown-unit-box {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .countdown-number-display {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .countdown-unit-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .hero-image-container {
+            position: relative;
+        }
+
+        .hero-main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .primary-action-button {
+            background: linear-gradient(45deg, var(--secondary-color), var(--warning-color));
+            color: white;
+            padding: 18px 36px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse-animation 2s infinite;
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .primary-action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(220, 38, 38, 0.4);
+        }
+
+        @keyframes pulse-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .content-section-wrapper {
+            padding: 80px 0;
+            background: var(--background-white);
+        }
+
+        .section-main-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .section-description-text {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card-item {
+            background: var(--background-white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px var(--shadow-color);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .feature-title-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .feature-description-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .testimonials-section-wrapper {
+            background: var(--background-light);
+            padding: 80px 0;
+        }
+
+        .testimonials-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .testimonial-card-container {
+            background: var(--background-white);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px var(--shadow-color);
+            text-align: center;
+        }
+
+        .testimonial-avatar-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .testimonial-content-text {
+            font-style: italic;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .testimonial-author-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .cta-section-wrapper {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--warning-color) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-main-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .cta-description-text {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .risk-disclaimer-section {
+            background: var(--background-white);
+            padding: 60px 0;
+            border-top: 2px solid var(--warning-color);
+        }
+
+        .disclaimer-content-wrapper {
+            background: #fef3cd;
+            border: 2px solid var(--warning-color);
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .disclaimer-title-text {
+            color: var(--warning-color);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .disclaimer-list-items {
+            list-style: none;
+            space-y: 8px;
+        }
+
+        .disclaimer-list-items li {
+            color: #92400e;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .footer-section-wrapper {
+            background: var(--text-primary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .footer-link-item {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-link-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .whatsapp-floating-icon {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 64px;
+            height: 64px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            animation: breathing-effect 3s infinite;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-icon-symbol {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .notification-badge-counter {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        @keyframes breathing-effect {
+            0% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.1); }
+            100% { transform: translateY(-50%) scale(1); }
+        }
+
+        .floating-bottom-button {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, var(--secondary-color), var(--warning-color));
+            color: white;
+            padding: 16px 48px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 1000;
+            animation: floating-breathe 2.5s infinite;
+            box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
+            min-width: 280px;
+        }
+
+        @keyframes floating-breathe {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-main-title {
+                font-size: 2.5rem;
+            }
+            
+            .countdown-display-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .features-grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .whatsapp-floating-icon {
+                right: 16px;
+                width: 56px;
+                height: 56px;
+            }
+            
+            .floating-bottom-button {
+                min-width: 240px;
+                padding: 14px 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section-container">
+        <div class="container-wrapper">
+            <div class="hero-content-grid">
+                <div class="hero-text-content">
+                    <h1 class="hero-main-title">Möchten Sie sich bei Aktieninvestitionen abheben?</h1>
+                    <p class="hero-description-text">
+                        Viele Menschen folgen Markttrends oder hören auf Gerüchte, aber diese Methode kann leicht zu Verwirrung führen. Echte Investmentexperten wissen, wie man mit Gleichgesinnten kommuniziert und professionelle Analysemethoden beherrscht.
+                    </p>
+                    
+                    <div class="countdown-timer-wrapper">
+                        <div class="countdown-label-text">⏰ Begrenztes Angebot - Nur noch:</div>
+                        <div class="countdown-display-grid">
+                            <div class="countdown-unit-box">
+                                <span class="countdown-number-display" id="countdown-days-display">02</span>
+                                <span class="countdown-unit-label">Tage</span>
+                            </div>
+                            <div class="countdown-unit-box">
+                                <span class="countdown-number-display" id="countdown-hours-display">00</span>
+                                <span class="countdown-unit-label">Stunden</span>
+                            </div>
+                            <div class="countdown-unit-box">
+                                <span class="countdown-number-display" id="countdown-minutes-display">00</span>
+                                <span class="countdown-unit-label">Minuten</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="primary-action-button" onclick="d2()">
+                        Treten Sie jetzt unserer Plattform bei
+                    </button>
+                </div>
+                
+                <div class="hero-image-container">
+                    <img src="img/1.jpg" alt="Professional Investment" class="hero-main-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section-wrapper">
+        <div class="container-wrapper">
+            <h2 class="section-main-title">Möchten Sie Ihre Investmentstrategie optimieren?</h2>
+            <p class="section-description-text">
+                Studien zeigen, dass datengestützte Investmentmethoden Anlegern helfen können, effizienter Entscheidungen zu treffen. Treten Sie unserer Investor-Community bei und erhalten Sie einfach professionelle Unterstützung und praktische Ressourcen.
+            </p>
+            
+            <div class="features-grid-container">
+                <div class="feature-card-item">
+                    <div class="feature-icon-wrapper">📊</div>
+                    <h3 class="feature-title-text">Wöchentliche Markteinblicke & ausgewählte Aktienlisten</h3>
+                    <p class="feature-description-text">
+                        Wir bieten tiefgreifende Marktanalysen und ausgewählte Aktienlisten, um Ihnen zu helfen, aktuelle Trends besser zu verstehen und potenzielle Chancen zu entdecken.
+                    </p>
+                </div>
+                
+                <div class="feature-card-item">
+                    <div class="feature-icon-wrapper">🎓</div>
+                    <h3 class="feature-title-text">Investmentwissen & Strategieführung</h3>
+                    <p class="feature-description-text">
+                        Durch das Erlernen von Investmenttechniken und -strategien verstehen Sie, wie Sie klügere finanzielle Entscheidungen treffen und Ihre Investmentfähigkeiten verbessern können.
+                    </p>
+                </div>
+                
+                <div class="feature-card-item">
+                    <div class="feature-icon-wrapper">🤝</div>
+                    <h3 class="feature-title-text">Erfahrungsaustausch mit Community-Mitgliedern</h3>
+                    <p class="feature-description-text">
+                        In einer unterstützenden und kooperativen Umgebung teilen Sie Erkenntnisse mit anderen Investoren, erhalten Inspiration und wachsen gemeinsam.
+                    </p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="primary-action-button" onclick="d2()">
+                    Klicken Sie hier für Details
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section-wrapper" style="background: var(--background-light);">
+        <div class="container-wrapper">
+            <h2 class="section-main-title">Warum unsere Aktienhandelsstrategie wählen?</h2>
+            <p class="section-description-text">
+                Machen Sie Ihr Trading intelligenter und effizienter. Wir bieten professionelle Unterstützung und innovative Tools, um Ihnen zu helfen, bessere Entscheidungen am Markt zu treffen.
+            </p>
+            
+            <div class="features-grid-container">
+                <div class="feature-card-item">
+                    <div class="feature-icon-wrapper">📈</div>
+                    <h3 class="feature-title-text">Datengesteuerte Markteinblicke</h3>
+                    <p class="feature-description-text">
+                        Durch fortschrittliche Analysetools nutzen wir Markttrends und historische Daten, um Ihnen zu helfen, potenziellere Handelsmöglichkeiten zu entdecken.
+                    </p>
+                </div>
+                
+                <div class="feature-card-item">
+                    <div class="feature-icon-wrapper">👨‍💼</div>
+                    <h3 class="feature-title-text">Professionelle Unterstützung & Beratung</h3>
+                    <p class="feature-description-text">
+                        Unser Beraterteam verfügt über umfangreiche internationale Markterfahrung und kann Ihnen gezielte Handelsberatung zur Risikomanagement bieten.
+                    </p>
+                </div>
+                
+                <div class="feature-card-item">
+                    <div class="feature-icon-wrapper">📚</div>
+                    <h3 class="feature-title-text">Flexible Lernressourcen</h3>
+                    <p class="feature-description-text">
+                        Ob Sie ein Anfänger oder ein erfahrener Investor sind, unsere Lernressourcen können Ihre Bedürfnisse erfüllen und Ihnen helfen, Fähigkeiten zu verbessern.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section-wrapper">
+        <div class="container-wrapper">
+            <h2 class="section-main-title">Was unsere Mitglieder sagen</h2>
+            <div class="testimonials-grid-layout">
+                <div class="testimonial-card-container">
+                    <div class="testimonial-avatar-image">MK</div>
+                    <p class="testimonial-content-text">
+                        "Die Marktanalysen haben mir geholfen, fundiertere Investmententscheidungen zu treffen. Die Community ist sehr unterstützend."
+                    </p>
+                    <p class="testimonial-author-name">M. Klein</p>
+                </div>
+                
+                <div class="testimonial-card-container">
+                    <div class="testimonial-avatar-image">AS</div>
+                    <p class="testimonial-content-text">
+                        "Dank der professionellen Beratung konnte ich meine Handelsstrategie erheblich verbessern. Sehr empfehlenswert."
+                    </p>
+                    <p class="testimonial-author-name">A. Schmidt</p>
+                </div>
+                
+                <div class="testimonial-card-container">
+                    <div class="testimonial-avatar-image">JM</div>
+                    <p class="testimonial-content-text">
+                        "Die Lernressourcen sind ausgezeichnet und haben mir geholfen, mein Investmentverständnis zu vertiefen."
+                    </p>
+                    <p class="testimonial-author-name">J. Müller</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section-wrapper">
+        <div class="container-wrapper">
+            <h2 class="cta-main-title">Handeln Sie jetzt und verändern Sie Ihre Investmentzukunft!</h2>
+            <p class="cta-description-text">
+                Zögern Sie nicht länger, die Gelegenheit liegt vor Ihnen! Klicken Sie auf die Schaltfläche unten, um unserer professionellen Investor-Community beizutreten!
+            </p>
+            <button class="primary-action-button" onclick="d2()">
+                Jetzt beitreten und durchstarten
+            </button>
+        </div>
+    </section>
+
+    <section class="risk-disclaimer-section">
+        <div class="container-wrapper">
+            <div class="disclaimer-content-wrapper">
+                <h3 class="disclaimer-title-text">
+                    ⚠️ Wichtiger Risikohinweis
+                </h3>
+                <ul class="disclaimer-list-items">
+                    <li class="risk-item">*Der Handel mit Finanzinstrumenten birgt ein hohes Risiko für Ihr Kapital und Sie können mehr als Ihre ursprüngliche Investition verlieren. Der Handel ist nicht für alle Anleger geeignet und Sie sollten sicherstellen, dass Sie die damit verbundenen Risiken verstehen..</li>
+                    <li class="risk-item">*Offenlegung von Anlageberatungen: Diese Informationen stellen keine Anlageberatung dar. Jegliche Bezugnahme auf die vergangene oder potenzielle Wertentwicklung einer Anlage stellt keine Beratung dar und sollte nicht als Garantie bestimmter Ergebnisse oder Erträge ausgelegt werden..</li>
+                    <li class="risk-item">*Sie sollten Ihre eigene finanzielle Situation und Anlageziele berücksichtigen und gegebenenfalls unabhängigen Rat einholen. Führen Sie immer eine unabhängige Recherche durch, bevor Sie eine Anlageentscheidung treffen.</li>
+                   
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section-wrapper">
+        <div class="container-wrapper">
+            <div class="footer-links-container">
+                <a href="privacy.html" class="footer-link-item">Datenschutzrichtlinie</a>
+                <a href="terms.html" class="footer-link-item">Nutzungsbedingungen</a>
+                <a href="risk_warning.html" class="footer-link-item">Haftungsausschluss</a>
+            </div>
+            <p>&copy; 2024 Professionelle Investmentgemeinschaft. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+<!--
+    <div class="whatsapp-floating-icon" onclick="k2()">
+        <span class="whatsapp-icon-symbol">💬</span>
+        <div class="notification-badge-counter">1</div>
+    </div>
+-->
+    <button class="floating-bottom-button" onclick="d2()">
+        Kostenlose Beratung erhalten
+    </button>
+
+    <script>
+        function initializeCountdownTimer() {
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 2);
+            targetDate.setHours(0, 0, 0, 0);
+
+            function updateCountdownDisplay() {
+                const currentTime = new Date().getTime();
+                const timeDifference = targetDate.getTime() - currentTime;
+
+                if (timeDifference > 0) {
+                    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+                    document.getElementById('countdown-days-display').textContent = days.toString().padStart(2, '0');
+                    document.getElementById('countdown-hours-display').textContent = hours.toString().padStart(2, '0');
+                    document.getElementById('countdown-minutes-display').textContent = minutes.toString().padStart(2, '0');
+                } else {
+                    document.getElementById('countdown-days-display').textContent = '00';
+                    document.getElementById('countdown-hours-display').textContent = '00';
+                    document.getElementById('countdown-minutes-display').textContent = '00';
+                }
+            }
+
+            updateCountdownDisplay();
+            setInterval(updateCountdownDisplay, 60000);
+        }
+
+        function d2() {
+            window.open('https://wa.me/', '_blank');
+        }
+
+        function k2() {
+            window.open('https://wa.me/', '_blank');
+        }
+
+        function addSmoothScrollBehavior() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        function initializeAnimationObserver() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.feature-card-item, .testimonial-card-container').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                animationObserver.observe(element);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCountdownTimer();
+            addSmoothScrollBehavior();
+            initializeAnimationObserver();
+        });
+
+        window.addEventListener('resize', function() {
+            const viewport = document.querySelector("meta[name=viewport]");
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0');
+        });
+    </script>
+</body>
+</html>
